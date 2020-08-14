@@ -1,0 +1,7 @@
+Olá aprovadores e administradores!
+
+Notificamos que determinado contrato de título <%= @contract.title %> sofreu o aval de um de nossos analistas.
+<%= @comment.user.first_name %> comentou no dia <%= I18n.l(@comment.created_at, format: :short)%>
+Segue comentário abaixo:
+<%= @comment.observation %>
+Por favor, avaliar decisão e analisar o contrato citado em nosso sistema!

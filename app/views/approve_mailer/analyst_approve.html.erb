@@ -1,0 +1,12 @@
+<p>Olá aprovadores e administradores!</p>
+
+<p>Notificamos que determinado contrato de título <%= @contract.title %> sofreu o aval de um de nossos analistas.</p>
+
+<div style="background-color: ##ededed; border-left: 6px solid #efc430; border-bottom: 6px solid #efc430; padding: 7px">
+    <p><strong><%= @comment.user.first_name %></strong> comentou no dia <%= I18n.l(@comment.created_at, format: :short)%></p>
+    <p>Segue comentário abaixo: </p>
+    <p style="border: 2px solid #5f5f5f; border-radios: 3px; padding: 5px; font-style: italic"><%= @comment.observation %></p>
+</div>
+<p style="border-bottom: 6px solid #efc430;  padding: 7px">Por favor, avaliar decisão e analisar o contrato citado em nosso sistema.
+<%= link_to 'Ver contrato', users_backoffice_contract_url(@contract) %>
+</p>

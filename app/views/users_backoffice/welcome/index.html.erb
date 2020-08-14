@@ -1,0 +1,48 @@
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12  ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Página inicial</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+            <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <%=link_to users_backoffice_welcome_index_path, { :class => "nav-link active"} do %>
+                        <span>Home</span>
+                    <% end %>
+                </li>
+                
+                <% if current_user.profile_id == 1 %>
+                    <li class="nav-item"> 
+                        <%=link_to users_backoffice_users_path, { :class => "nav-link"} do %>
+                            <span>Usuários</span>
+                        <% end %>        
+                    </li>
+                <% end %>
+
+                <li class="nav-item"> 
+                    <%=link_to users_backoffice_contracts_path, { :class => "nav-link"} do %>
+                        <span>Contratos</span>
+                    <% end %>        
+                </li>
+            </ul>
+            <%= render partial: "users_backoffice/welcome/shared/painel_info" %>   
+            
+            <%= render partial: "users_backoffice/welcome/shared/activities" %>
+
+            <%= render partial: "users_backoffice/welcome/shared/info" %>
+
+        </div>
+    </div>
+    </div>
+</div>

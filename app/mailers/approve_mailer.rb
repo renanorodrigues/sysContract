@@ -1,0 +1,2 @@
+class ApproveMailer < ApplicationMailer
+end

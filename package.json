@@ -1,0 +1,11 @@
+{
+  "name": "sysContract_v2",
+  "private": true,
+  "dependencies": {},
+  "version": "1.0.1",
+  "description": "A system that controls and manages files and contracts between peaple",
+  "main": "index.js",
+  "repository": "https://github.com/renanorodrigues/sysContract.git",
+  "author": "Renan Oliveira Rodrigues",
+  "license": "MIT"
+}

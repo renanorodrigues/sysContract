@@ -1,0 +1,10 @@
+<p>Olá analistas!</p>
+
+<p>Notificamos que determinado contrato de título <%= @contract.title %> foi adicionado por um de nossos usuários do sistema.</p>
+
+<div style="background-color: ##ededed; border-left: 6px solid #efc430; border-bottom: 6px solid #efc430; border-bottom: 6px solid #efc430; padding: 7px">
+    <p><strong><%= @contract.user.first_name %></strong> cadastrou no dia <%= I18n.l(@contract.created_at, format: :short)%></p>
+    <p>Por favor, avaliar decisão e analisar o contrato citado em nosso sistema.
+        <%= link_to 'Relatório de contratos', users_backoffice_contracts_url %>
+    </p>
+<div>

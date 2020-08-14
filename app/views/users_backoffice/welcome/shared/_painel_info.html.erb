@@ -1,0 +1,19 @@
+<div class="row" style="display: inline-block;" >
+    <div class="tile_count">
+    <div class="col-md-3 col-sm-4  tile_stats_count">
+        <span class="count_top"><i class="fa fa-users"></i> Total de Usuários</span>
+        <div class="count"><%= @tot_info[0] %></div>
+    </div>
+    <div class="col-md-3 col-sm-4  tile_stats_count">
+        <span class="count_top"><i class="fa fa-file-text"></i> Contratos Cadastrados</span>
+        <div class="count"><%= @tot_info[1] %></div>
+    </div>
+    <div class="col-md-3 col-sm-4  tile_stats_count">
+        <span class="count_top"><i class="fa fa-comments"></i> Total de Comentários</span>
+        <div class="count"><%= @tot_info[2] %></div> 
+    </div>
+    <div class="col-md-3 col-sm-4  tile_stats_count">
+        <span class="count_top"><i class="fa fa-file-text"></i> Contratos Aprovados</span>
+        <div class="count green"><%= @tot_info[3] %></div> 
+    </div>
+</div>

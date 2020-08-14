@@ -1,0 +1,14 @@
+Olá aprovadores e administradores!
+
+Notificamos que determinado contrato de nome <%= @contract.title %> está no seguinte estado: <%= final_state_contract(@contract.final_status)%>
+Segue comentário(s) abaixo.
+
+
+<% @comments.each do |c| %>
+    Decisão: <%= c.status ? "Aprovado" : "Reprovado" %>
+    <%= c.user.first_name %> escreveu o seguinte:
+    <%= c.observation %>
+    Avaliação feita na data: <%= I18n.l(c.updated_at, format: :short) %>
+<% end %>
+
+Por favor, avaliar decisão e analisar o contrato citado em nosso sistema!
