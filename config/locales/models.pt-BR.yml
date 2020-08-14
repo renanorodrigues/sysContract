@@ -1,0 +1,70 @@
+pt-BR:
+  activerecord:
+    models:
+      user:
+        one: Usuário
+        other: Usuários
+      profile:
+        one: Perfil
+        other: Perfis
+      contract:
+        one: Contrato
+        other: Contratos
+      comment:
+        one: Comentário
+        other: Comentários
+      enterprise:
+        one: Empresa
+        other: Empresas
+    attributes:
+      user:
+        id: 'Código'
+        email: 'Email'
+        password: 'Senha'
+        first_name: 'Nome'
+        last_name: 'Sobrenome'
+        cpf: 'CPF'
+        profile_id: 'Perfil'
+        created_at: 'Data de registro'
+        updated_at: 'Data de atualização'
+      profile:
+        id: 'Código'
+        description: 'Descrição'
+        created_at: 'Data de registro'
+        updated_at: 'Data de atualização'
+      contract:
+        id: 'Código'
+        title: 'Título'
+        description: 'Descrição'
+        final_status: 'Deliberação'
+        user_id: 'Usuário'
+        enterprise_id: 'Empresas'
+        type: 'Tipo de documento'
+        finality: 'Finalidade'
+        file_contract: 'Arquivo'
+        created_at: 'Data de registro'
+        updated_at: 'Data de atualização'
+      comment:
+        id: 'Código'
+        status: 'Deliberação'
+        observation: 'Observação'
+        user_id: 'Usuário'
+        contract_id: 'Contrato'
+        created_at: 'Data de registro'
+        updated_at: 'Data de atualização'
+      enterprise:
+        id: 'Código'
+        razao_social: 'Razão social'
+        nome_fantasia: 'Nome fantasia'
+        cnpj: 'CNPJ'
+        contact_number: 'Telefone'
+        email: 'E-mail'
+        state: 'Estado'
+        city: 'Cidade'
+        cep: 'Código postal'
+        address: 'Endereço'
+        observation: 'Observação'
+        identification: 'Identificação'
+        created_at: 'Data de registro'
+        updated_at: 'Data de atualização'     
+  
