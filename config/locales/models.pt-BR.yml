@@ -4,18 +4,21 @@ pt-BR:
       user:
         one: Usuário
         other: Usuários
-      profile:
-        one: Perfil
-        other: Perfis
+      document:
+        one: Documento
+        other: Documentos
       contract:
         one: Contrato
         other: Contratos
       comment:
         one: Comentário
         other: Comentários
-      enterprise:
-        one: Empresa
-        other: Empresas
+      associated: 
+        one: Vinculado
+        other: Vinculados
+      persona:
+        one: Pessoa
+        other: Pessoas
     attributes:
       user:
         id: 'Código'
@@ -23,13 +26,9 @@ pt-BR:
         password: 'Senha'
         first_name: 'Nome'
         last_name: 'Sobrenome'
+        profile: 'Perfil'
         cpf: 'CPF'
         profile_id: 'Perfil'
-        created_at: 'Data de registro'
-        updated_at: 'Data de atualização'
-      profile:
-        id: 'Código'
-        description: 'Descrição'
         created_at: 'Data de registro'
         updated_at: 'Data de atualização'
       contract:
@@ -46,23 +45,20 @@ pt-BR:
         updated_at: 'Data de atualização'
       comment:
         id: 'Código'
-        status: 'Deliberação'
+        decision: 'Deliberação'
         observation: 'Observação'
         user_id: 'Usuário'
         contract_id: 'Contrato'
         created_at: 'Data de registro'
         updated_at: 'Data de atualização'
-      enterprise:
+      associated:
         id: 'Código'
-        razao_social: 'Razão social'
-        nome_fantasia: 'Nome fantasia'
-        cnpj: 'CNPJ'
-        contact_number: 'Telefone'
+        document_id: 'Documento'
+        persona_id: 'Vinculado'
+      persona:
+        id: 'Código'
+        full_name: 'Razão social'
         email: 'E-mail'
-        state: 'Estado'
-        city: 'Cidade'
-        cep: 'Código postal'
-        address: 'Endereço'
         observation: 'Observação'
         identification: 'Identificação'
         created_at: 'Data de registro'

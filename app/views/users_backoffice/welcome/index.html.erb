@@ -22,7 +22,7 @@
                     <% end %>
                 </li>
                 
-                <% if current_user.profile_id == 1 %>
+                <% if current_user.profile == "Administrador" %>
                     <li class="nav-item"> 
                         <%=link_to users_backoffice_users_path, { :class => "nav-link"} do %>
                             <span>Usuários</span>

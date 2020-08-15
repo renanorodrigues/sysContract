@@ -52,13 +52,6 @@
                 </div>
 
                 <div class="item form-group">  
-                    <%= form.label :cpf, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                    <div class="col-md-6 col-sm-6 ">
-                        <%= form.text_field :cpf, class:"form-control", maxlength:"11"%>
-                    </div>
-                </div>
-
-                <div class="item form-group">  
                     <%= form.label :email, class:"col-form-label col-md-3 col-sm-3 label-align" %>
                     <div class="col-md-6 col-sm-6 ">
                         <%= form.text_field :email, class:"form-control"%>
@@ -72,10 +65,10 @@
                     </div>
                 </div>
 
-                <% if current_user.profile_id == 1 %>
+                <% if current_user.profile == "Administrador" %>
                     <div class="item form-group">
-                        <%= form.label :profile_id, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                        <%= form.select(:profile_id, Profile.all.collect {|p| [p.description, p.id]}, {}, :class => "form-control col-md-6 ml-2") %>
+                        <%= form.label :profile, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                        <%= form.select(:profile, ["Administrador", "Aprovador", "Analista", "Auxiliar", "Advogado"], {}, :class => "form-control col-md-6 ml-2") %>
                     </div>
                 <% end %>
 

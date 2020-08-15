@@ -35,7 +35,7 @@ class GenerateXLSXService < ApplicationService
                 worksheet.write(i, 1, u.first_name)
                 worksheet.write(i, 2, u.last_name)
                 worksheet.write(i, 3, u.email)
-                worksheet.write(i, 4, u.profile.description)
+                worksheet.write(i, 4, u.profile)
                 worksheet.write(i, 5, I18n.l(u.created_at, format: :short))
             i += 1
             end

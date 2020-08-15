@@ -52,22 +52,20 @@
 
             <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap display" cellspacing="0" width="100%">
                 <thead>
-                    <th><%= trans_attr(@users, :id) %></th>
                     <th><%= trans_attr(@users, :first_name) %></th>
                     <th><%= trans_attr(@users, :last_name) %></th>
                     <th><%= trans_attr(@users, :email) %></th>
-                    <th><%= trans_attr(@users, :profile_id) %></th>
+                    <th><%= trans_attr(@users, :profile) %></th>
                     <th><%= trans_attr(@users, :created_at) %></th>
                     <th></th>
                 </thead>
                 <tbody>
                     <% @users.each do |user| %>
                         <tr>
-                            <td><%= user.id %></td>
                             <td><%= user.first_name %></td>
                             <td><%= user.last_name %></td>
                             <td><%= user.email %></td>
-                            <td><%= user.profile.description %></td>
+                            <td><%= user.profile%></td>
                             <td><%= I18n.l(user.created_at, format: :short) %></td>
 
                             <td>

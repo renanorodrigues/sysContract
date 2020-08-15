@@ -57,7 +57,7 @@ class UsersBackoffice::UsersController < UsersBackofficeController
   end
 
   def params_user
-    params_user = params.require(:user).permit(:email, :password, :first_name, :last_name, :cpf, :profile_id)
+    params_user = params.require(:user).permit(:email, :password, :first_name, :last_name, :profile)
   end
 
   def verify_password

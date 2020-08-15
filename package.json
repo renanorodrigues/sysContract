@@ -1,7 +1,18 @@
 {
   "name": "sys_contract",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "bootstrap-growl-ifightcrime": "^1.1.0",
+    "bootstrap-wysiwyg": "^2.0.1",
+    "datatables.net": "^1.10.21",
+    "fastclick": "^1.0.6",
+    "font-awesome": "^4.7.0",
+    "jquery": "1.9.1 - 3",
+    "malihu-custom-scrollbar-plugin": "^3.1.5",
+    "nprogress": "^0.2.0",
+    "popper.js": "^1.16.1"
+  },
   "version": "1.0.1",
   "description": "A system that controls and manages files and contracts between peaple",
   "main": "index.js",

@@ -1,0 +1,7 @@
+<p>Olá, <%= @resource.email %>!</p>
+
+<p>Sua conta foi bloqueada devido ao excesso número de tentativas de acesso ao sistema</p>
+
+<p>Clique no link abaixo para desbloquear sua senha: </p>
+
+<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
