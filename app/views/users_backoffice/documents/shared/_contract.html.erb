@@ -1,0 +1,86 @@
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Área de avaliações</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Settings 1</a>
+                <a class="dropdown-item" href="#">Settings 2</a>
+                </div>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-md-3 mail_list_column">
+                    <% @contract.comments.each do |comment| %> 
+                        <a href="#">
+                            <div class="mail_list">
+                                <div class="left">
+                                    <i class="fa fa-circle"></i> <i class="fa fa-edit"></i>
+                                </div>
+                                <div class="right">
+                                    <h4 class="display-5 text-uppercase">
+                                        <%= comment.status ? 'Contrato anuído' : 'Contrato dispensado' %>
+                                    </h4>
+                                    <h3><%= comment.user.first_name %>
+                                    <small class="font-weight-bold"><%= comment.user.profile.description %></small></h3>
+                                    <p> <%= comment.observation %> </p>
+                                    <p> <%= I18n.l(comment.created_at, format: :short) %> </p>
+                                    <% if current_user.id == comment.user_id %>
+                                        <%= link_to "EDITAR", edit_users_backoffice_contract_comment_path(:contract_id => @contract.id, :id => comment.id), class:"btn btn-sm btn-warning btn-block" %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </a>
+                    <% end %>
+                    
+                    <% if @contract.comments.where(user_id: current_user.id).blank? %> 
+                        <%= link_to "AVALIAR", new_users_backoffice_contract_comment_path(:contract_id => @contract.id), class:"btn btn-sm btn-success btn-block" %>
+                    <% end %>
+                </div> 
+
+                <div class="col-md-9 mail_view">
+                    <div class="inbox-body">
+                    <div class="mail_heading row">
+                        <div class="col-md-8">
+                        </div>
+                        <div class="col-md-4 text-right">
+                        <p class="date"> <%= I18n.l(@contract.created_at, format: :long) %></p>
+                        </div>
+                        <div class="col-md-12">
+                        <h4> Descrição do contrato:
+                            <%= @contract.description %>
+                        </h4>
+                        </div>
+                    </div>
+                    <div class="sender-info">
+                        <div class="row">
+                        <div class="col-md-12">
+                            <strong><%= @contract.user.first_name %></strong>
+                            <span>cadastrou</span> o contrato abaixo
+                            <a class="sender-dropdown"><i class="fa fa-chevron-down"></i></a>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="view-mail">
+                        <embed
+                        src="<%= polymorphic_url(@contract.file_contract) %>"
+                        type="application/pdf" width="950" height="900">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    

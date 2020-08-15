@@ -1,0 +1,99 @@
+<% if @document.errors.any? %>
+
+<div class="alert alert-danger" role="alert">
+<ul>
+<% @document.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+<% end %>
+</ul>
+</div>
+
+<% end %>
+
+<div class="clearfix"></div>
+<div class="row">
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Documento</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br />
+            <%=form_with(model: [ :users_backoffice, @document], local:true) do |form|%>
+
+                <div class="item form-group">  
+                    <%= form.label :description, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                    <div class="col-md-4 col-sm-4 ">
+                        <%= form.text_field :description, class:"form-control"%>
+                    </div>
+                </div>
+
+                <div class="item form-group">  
+                    <%= form.label :finality, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                        <%= form.select(:state, ["Locação", "Serviço de mão de obra", "Outros"], {},:class => "form-control col-md-4 ml-2") %>
+                </div>
+
+                <div class="item form-group">  
+                    <%= form.label :type, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                        <%= form.select(:state, ["Contrato", "Termo de responsabilidades", "Rescisão de funcionário"], {},:class => "form-control col-md-4 ml-2") %>
+                </div>
+
+                <div class="item form-group">  
+                    <%= form.label :file, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                    <div class="col-md-4 col-sm-4 ">
+                        <%= form.file_field :file, class:"form-control", accept: 'application/pdf'
+                        %>
+                    </div>
+                </div>
+
+                <%= form.hidden_field :user_id, :value => current_user.id %>
+                
+                <% if current_user.profile != "Auxiliar" %> 
+                    <h4 class="pt-5"> Adicionar contrato </h4>
+                    <%= form.fields_for :contract do |c| %> 
+
+                        <div class="item form-group">  
+                            <%= c.label :price, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                            <div class="col-md-4 col-sm-6">
+                                <%= c.text_field :price, class:"form-control"%>
+                            </div>
+                        </div>
+
+                        <div class="item form-group">  
+                            <%= c.label :salesman_name, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                            <div class="col-md-4 col-sm-6">
+                                <%= c.text_field :salesman_name, class:"form-control"%>
+                        </div>
+
+                        <div class="item form-group">  
+                            <%= c.label :validation, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                            <div class="col-md-4 col-sm-4">
+                                <%= c.date_field :validation, class:"form-control"%>
+                        </div>
+
+                        <div class="item form-group">  
+                            <%= c.label :expiration, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                            <div class="col-md-4 col-sm-4">
+                                <%= c.date_field :expiration, class:"form-control"%>
+                        </div>
+                    </div>
+
+
+                        <%= c.hidden_field :user_id, :value => current_user.id %>
+        
+                    <% end %>
+                <% end %>
+                
+                <div class="ln_solid"></div>
+                <div class="item form-group">
+                    <div class="col-md-6 col-sm-6 offset-md-3">
+                        <%= form.submit "Cadastrar", class:"btn btn-success submit" %>
+                    </div>
+                </div>
+
+            <% end %>
+        </div>
+    </div>
+</div>
+</div>

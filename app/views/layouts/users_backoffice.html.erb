@@ -54,64 +54,143 @@
                   </li>
                   
                   <% if current_user.profile == "Administrador" %>
-                  <li>
-                  <a><i class="fa fa-users" aria-hidden="true"></i>
-                  Usuários <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li>
-                        <%= link_to users_backoffice_users_path do%>
-                          Relatório de usuários
-                        <% end %>
-                      </li>
-                      
-                      <li>
-                        <%= link_to new_users_backoffice_user_path do%>
-                          Adicionar usuário
-                        <% end %>
-                      </li>
-                      
-                    </ul>
-                  </li>
+                    <li>
+                      <a><i class="fa fa-users" aria-hidden="true"></i>
+                      Usuários <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li>
+                          <%= link_to users_backoffice_users_path do%>
+                            Relatório de usuários
+                          <% end %>
+                        </li>
+                        
+                        <li>
+                          <%= link_to new_users_backoffice_user_path do%>
+                            Adicionar usuário
+                          <% end %>
+                        </li>
+                        
+                      </ul>
+                    </li>
 
-                  <li>
-                  <a><i class="fa fa-building-o" aria-hidden="true"></i>
-                  Empresas <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li>
-                        <%= link_to users_backoffice_enterprises_path do%>
-                          Relatório de empresas
-                        <% end %>
-                      </li>
-                      
-                      <li>
-                        <%= link_to new_users_backoffice_enterprise_path do%>
-                          Adicionar empresa
-                        <% end %>
-                      </li>
-                      
-                    </ul>
-                  </li>
+                    <li>
+                      <a><i class="fa fa-building" aria-hidden="true"></i>
+                      Pessoa Física | Jurídica <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                        <li>
+                          <%= link_to new_users_backoffice_user_path do%>
+                            Adicionar pessoa
+                          <% end %>
+                        </li>
+
+                        <li>
+                          <a><i class="fa fa-handshake-o" aria-hidden="true"></i>
+                          Vendedores <span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li>
+                              <%= link_to users_backoffice_enterprises_path do%>
+                                Relatório de vendedores
+                              <% end %>
+                            </li>
+                          </ul>
+                        </li>
+
+                        <li>
+                          <a><i class="fa fa-user-circle" aria-hidden="true"></i>
+                          Clientes <span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li>
+                              <%= link_to users_backoffice_enterprises_path do%>
+                                Relatório de clientes
+                              <% end %>
+                            </li>
+                          </ul>
+                        </li>
+
+                        <li>
+                          <a><i class="fa fa-cubes" aria-hidden="true"></i>
+                          Fornecedores <span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li>
+                              <%= link_to users_backoffice_enterprises_path do%>
+                                Relatório de fornecedores
+                              <% end %>
+                            </li>
+                          </ul>
+                        </li>
+                       
+                        <li>
+                          <a><i class="fa fa-building-o" aria-hidden="true"></i>
+                          Empresas do grupo <span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li>
+                              <%= link_to users_backoffice_enterprises_path do%>
+                                Relatório de empresas
+                              <% end %>
+                            </li>
+                          </ul>
+
+                        </li>
+
+                        <li>
+                          <a><i class="fa fa-balance-scale" aria-hidden="true"></i>
+                          Advocacia <span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li>
+                              <%= link_to users_backoffice_enterprises_path do%>
+                                Relatório de escritórios
+                              <% end %>
+                            </li>
+                          </ul>
+
+                        </li>
+                        
+                      </ul>
+                    </li>
+
                   <% end %>
 
                   <li>
-                  <a><i class="fa fa-file-text" aria-hidden="true"></i>
-                  Contratos <span class="fa fa-chevron-down"></span></a>
+                    <a><i class="fa fa-files-o" aria-hidden="true"></i>
+                    Documentos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
-                        <%= link_to users_backoffice_contracts_path do%>
-                          Relatório de contratos
+                        <%= link_to users_backoffice_documents_path do%>
+                          Relatório de documentos
                         <% end %>
                       </li>
                       
-                      <% if current_user.profile == "Analista" or current_user.profile == "Auxiliar" %>
+                      <% if current_user.profile == "Analista" or current_user.profile == "Administrador" %>
                       <li>
-                        <%= link_to new_users_backoffice_contract_path do%>
-                          Adicionar contrato
+                        <%= link_to new_users_backoffice_document_path do%>
+                          Adicionar documento
                         <% end %>
                       </li>
                       <% end %>
+
+                      <li>
+                        <a><i class="fa fa-file-text" aria-hidden="true"></i>
+                        Contratos <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li>
+                            <%= link_to users_backoffice_contracts_path do%>
+                              Relatório de contratos
+                            <% end %>
+                          </li>
+                          
+                          <% if current_user.profile == "Analista" or current_user.profile == "Administrador" %>
+                          <li>
+                            <%= link_to new_users_backoffice_contract_path do%>
+                              Adicionar contrato
+                            <% end %>
+                          </li>
+                          <% end %>
+                        </ul>
+                      </li>
+                      
                     </ul>
                   </li>
+                  
                 </ul>
               </div>
 

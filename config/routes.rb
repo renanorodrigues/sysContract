@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :users_backoffice do
     get 'welcome/index'
     resources :users
+    resources :documents
     resources :enterprises
     resources :contracts do
       resources :comments
