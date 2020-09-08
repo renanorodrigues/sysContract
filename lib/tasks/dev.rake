@@ -82,7 +82,7 @@ namespace :dev do
 
   desc "Adicionando empresas de teste"
     task add_default_enterprises: :environment do
-      5.times do
+      3.times do
         Persona.create!(
           full_name: Faker::Company.name,
           email: Faker::Internet.email,

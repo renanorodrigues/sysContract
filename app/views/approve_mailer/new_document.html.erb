@@ -1,0 +1,10 @@
+<p>Olá a todos!</p>
+
+<p>Notificamos que determinado documento de descrição <%= @document.description %> foi adicionado por um de nossos usuários do sistema.</p>
+
+<div style="background-color: ##ededed; border-left: 6px solid #efc430; border-bottom: 6px solid #efc430; border-bottom: 6px solid #efc430; padding: 7px">
+    <p>O documento foi cadastrado no dia <%= I18n.l(@document.created_at, format: :short)%></p>
+    <p>Por favor, avaliar decisão e analisar o documento citado em nosso sistema.
+        <%= link_to 'Relatório de documentos', users_backoffice_documents_url %>
+    </p>
+<div>

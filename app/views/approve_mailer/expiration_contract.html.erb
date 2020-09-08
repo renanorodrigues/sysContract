@@ -1,0 +1,9 @@
+<p>Olá a todos!</p>
+
+<p>Notificamos que determinado contrato de nome <strong><%= @contract.document.description %></strong> atingiu seu prazo de vencimento na data estipulada entre as partes.</p>
+
+<div style="background-color: ##ededed; border-left: 6px solid #efc430; border-bottom: 6px solid #efc430; border-bottom: 6px solid #efc430; padding: 7px">
+    <p>Por favor, para mais informações do documento citado,  acessar nosso sistema clicando no link abaixo:
+        <%= link_to 'Ver contrato', users_backoffice_contract_url(@contract) %>
+    </p>
+<div>

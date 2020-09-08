@@ -22,21 +22,28 @@
                     <% @contract.comments.each do |comment| %> 
                         <a href="#">
                             <div class="mail_list">
-                                <div class="left">
-                                    <i class="fa fa-circle"></i> <i class="fa fa-edit"></i>
-                                </div>
-                                <div class="right">
-                                    <h4 class="display-5 text-uppercase">
-                                        <%= comment.status ? 'Contrato anuído' : 'Contrato dispensado' %>
-                                    </h4>
-                                    <h3><%= comment.user.first_name %>
-                                    <small class="font-weight-bold"><%= comment.user.profile.description %></small></h3>
-                                    <p> <%= comment.observation %> </p>
-                                    <p> <%= I18n.l(comment.created_at, format: :short) %> </p>
-                                    <% if current_user.id == comment.user_id %>
-                                        <%= link_to "EDITAR", edit_users_backoffice_contract_comment_path(:contract_id => @contract.id, :id => comment.id), class:"btn btn-sm btn-warning btn-block" %>
-                                    <% end %>
-                                </div>
+                                <div class="btn-group col-md-12 px-0"> 
+                                    <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-success btn-block dropdown-toggle"
+                                    href=""><i class="fa fa-comment" aria-hidden="true"></i>
+                                        <%= comment.user.first_name %> - <%= comment.user.profile %>
+                                    </a>
+                                    <ul class="dropdown-menu comment-contract"> 
+                                        <li class="dropdown-child">
+                                            <h4 class="display-5 text-uppercase">
+                                                <%= decision_comment(comment.user, comment.decision) %>
+                                            </h4>
+                                            <p><%= comment.observation %></p>
+                                            <p> <%= I18n.l(comment.created_at, format: :long) %> </p>
+                                            <% if current_user.id == comment.user_id %>
+                                                <%= link_to "EDITAR", edit_users_backoffice_contract_comment_path(comment), class:"btn btn-sm btn-warning btn-block" %>
+
+                                                <%=link_to users_backoffice_contract_comment_path(comment), method: :delete, class:"btn btn-danger btn-circle btn-block", data: { confirm: "Tem certeza que quer excluir?" } do %>
+                                                    REMOVER
+                                                <% end %>
+                                            <% end %> 
+                                        </li>
+                                    </ul>
+                                </div>     
                             </div>
                         </a>
                     <% end %>
@@ -49,29 +56,65 @@
                 <div class="col-md-9 mail_view">
                     <div class="inbox-body">
                     <div class="mail_heading row">
+                        <div class="col-md-12">
+                            <h4> Descrição do contrato:
+                                <span><%= @contract.document.description %></span>
+                            </h4>
+                        </div>
                         <div class="col-md-8">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th> Finalidade: </th>
+                                            <td><%= @contract.document.finality %></td>
+                                        </tr>
+                                        <tr>
+                                            <th> Vendedor: </th>
+                                            <td><%= @contract.persona.full_name %></td>
+                                        </tr>
+                                        <tr>
+                                            <th> Valor do contrato: </th>
+                                            <td>R$ <%= sprintf('%.2f', @contract.price)%></td>
+                                        </tr>
+                                        <tr>
+                                            <th> Data de validade: </th>
+                                            <td><%= I18n.l(@contract.validation, format: :long)%></td>
+                                        </tr>
+                                        <tr>
+                                            <th> Data de expiração: </th>
+                                            <td><%= I18n.l(@contract.expiration, format: :long)%></td>
+                                        </tr>
+                                        <tr>
+                                            <th> Duração do contrato: </th>
+                                            <td><%= duration_contract(@contract.validation, @contract.expiration)%> dias</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="col-md-4 text-right">
-                        <p class="date"> <%= I18n.l(@contract.created_at, format: :long) %></p>
-                        </div>
-                        <div class="col-md-12">
-                        <h4> Descrição do contrato:
-                            <%= @contract.description %>
-                        </h4>
+                            <p class="date"> <%= I18n.l(@contract.created_at, format: :long) %></p>
+                            <h5> Pessoas associadas </h5>
+                            <ul>
+                                <% @contract.document.personas.each do |persona| %>
+                                    <li>
+                                    <%= persona.identification %> - <%= persona.full_name %>
+                                    </li>
+                                <% end %>
+                            </ul>
                         </div>
                     </div>
                     <div class="sender-info">
                         <div class="row">
                         <div class="col-md-12">
-                            <strong><%= @contract.user.first_name %></strong>
-                            <span>cadastrou</span> o contrato abaixo
-                            <a class="sender-dropdown"><i class="fa fa-chevron-down"></i></a>
+                            <a class="sender-dropdown">Ver contrato <i class="fa fa-chevron-down"></i></a>
                         </div>
                         </div>
                     </div>
                     <div class="view-mail">
                         <embed
-                        src="<%= polymorphic_url(@contract.file_contract) %>"
+                        src="<%= polymorphic_url(@contract.document.file) %>"
                         type="application/pdf" width="950" height="900">
                     </div>
                 </div>

@@ -23,74 +23,35 @@
             <%=form_with(model: [ :users_backoffice, @contract], local:true) do |form|%>
 
                 <div class="item form-group">  
-                    <%= form.label :title, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                    <div class="col-md-6 col-sm-6 ">
-                        <%= form.text_field :title, class:"form-control"%>
+                    <%= form.label :persona_id, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                    <%= form.collection_select(:persona_id, Persona.where(identification: "Vendedor"), :id, :full_name, {}, class:"form-control col-md-4 ml-2", multiple:false) %>
+                </div>
+
+                <div class="item form-group">  
+                    <%= form.label :price, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                    <div class="col-md-2 col-sm-2 ">
+                        <%= form.number_field :price, class:"form-control", required: true%>
                     </div>
                 </div>
 
                 <div class="item form-group">  
-                    <%= form.label :description, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                    <div class="col-md-6 col-sm-6 ">
-                        <%= form.text_field :description, class:"form-control"%>
+                    <%= form.label :validation, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                    <div class="col-md-2 col-sm-2 ">
+                        <%= form.date_field :validation, class:"form-control", required: true%>
                     </div>
                 </div>
 
                 <div class="item form-group">  
-                    <%= form.label :finality, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                        <%= form.select(:state, ["Locação", "Serviço de mão de obra", "Outros"], {},:class => "form-control col-md-4 ml-2") %>
-                </div>
-
-                <div class="item form-group">  
-                    <%= form.label :type, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                        <%= form.select(:state, ["Contrato", "Termo de responsabilidades", "Rescisão de funcionário"], {},:class => "form-control col-md-4 ml-2") %>
-                </div>
-
-                <div class="item form-group">  
-                    <%= form.label :file_contract, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                    <div class="col-md-4 col-sm-4 ">
-                        <%= form.file_field :file_contract, class:"form-control", accept: 'application/pdf'
-                        %>
+                    <%= form.label :expiration, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                    <div class="col-md-2 col-sm-2 ">
+                        <%= form.date_field :expiration, class:"form-control", required: true%>
                     </div>
                 </div>
-
-                <div class="item form-group">
-                    <%= form.label :enterprise, class:"control-label col-md-3 col-sm-3 label-align" %>
-                    <div class="col-md-4 col-sm-4 ">
-                        <%= form.text_field :enterprise, class:"form-control", id:"autocomplete-custom-append" %>
-                    </div>
-                </div>
-
-                <%= form.hidden_field :user_id, :value => current_user.id %>
-                
-                <% if current_user.profile_id != 4 %> 
-                    <h4 class="pt-5"> Justificar contrato </h4>
-                    <%= form.fields_for :comments do |c| %> 
-
-                        <div class="item form-group">  
-                        <%= c.label :observation, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                        <div class="col-md-8 col-sm-6">
-                            <%= c.text_area :observation, size: "30x5", class:"form-control"%>
-                        </div>
-                        </div>
-
-                        <div class="item form-group" style="padding-left: 330px">  
-                            <%= c.radio_button :status, true %>
-                            <%= c.label :status, "Aprovado", :value => true, class:"col-form-label col-md-3 col-sm-3 " %>
-                            
-                            <%= c.radio_button :status, false, :checked => true %>
-                            <%= c.label :status, "Reprovado",  :value => false, class:"col-form-label col-md-3 col-sm-3 " %>
-                        </div> 
-
-                        <%= c.hidden_field :user_id, :value => current_user.id %>
-        
-                    <% end %>
-                <% end %>
-                
+               
                 <div class="ln_solid"></div>
                 <div class="item form-group">
                     <div class="col-md-6 col-sm-6 offset-md-3">
-                        <%= form.submit "Cadastrar", class:"btn btn-success submit" %>
+                        <%= form.submit "Enviar", class:"btn btn-success submit" %>
                     </div>
                 </div>
 

@@ -1,11 +1,11 @@
 <p>Olá aprovadores e administradores!</p>
 
-<p>Notificamos que determinado contrato de nome <%= @contract.title %> está no seguinte estado:<strong> <%= final_state_contract(@contract.final_status)%></strong></p>
+<p>Notificamos que determinado contrato de nome <%= @contract.document.description %> está no seguinte estado:<strong> <%= final_state_contract(@contract.status)%></strong></p>
 <p>Segue comentário(s) abaixo. </p>
 
 <div style="background-color: ##ededed; border-left: 6px solid #efc430; padding: 7px">
 <% @comments.each do |c| %>
-    <h4>Decisão do <%= c.user.profile.description %> : <strong><%= c.status ? "Aprovado" : "Reprovado" %> </strong></h4>
+    <h4>Decisão do <%= c.user.profile %> : <strong><%= c.decision ? "Aprovado" : "Reprovado" %> </strong></h4>
     <h5 style="color: #01015b"><%= c.user.first_name %> <small style="color: black">escreveu o seguinte:</small></h5>
     <p style="border: 2px solid #5f5f5f; border-radios: 3px; padding: 5px; font-style: italic"><i><%= c.observation %></i></p>
     <p style="border-bottom: 6px solid #efc430;  padding: 7px">Avaliação feita na data: <%= I18n.l(c.updated_at, format: :short) %></p>

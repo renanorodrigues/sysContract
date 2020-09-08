@@ -15,32 +15,11 @@
         </div>
         <div class="x_content">
 
-            <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <%=link_to users_backoffice_welcome_index_path, { :class => "nav-link active"} do %>
-                        <span>Home</span>
-                    <% end %>
-                </li>
-                
-                <% if current_user.profile == "Administrador" %>
-                    <li class="nav-item"> 
-                        <%=link_to users_backoffice_users_path, { :class => "nav-link"} do %>
-                            <span>Usuários</span>
-                        <% end %>        
-                    </li>
-                <% end %>
+            <%= render partial: "users_backoffice/shared/bradcrumbs"%>
 
-                <li class="nav-item"> 
-                    <%=link_to users_backoffice_contracts_path, { :class => "nav-link"} do %>
-                        <span>Contratos</span>
-                    <% end %>        
-                </li>
-            </ul>
             <%= render partial: "users_backoffice/welcome/shared/painel_info" %>   
             
             <%= render partial: "users_backoffice/welcome/shared/activities" %>
-
-            <%= render partial: "users_backoffice/welcome/shared/info" %>
 
         </div>
     </div>

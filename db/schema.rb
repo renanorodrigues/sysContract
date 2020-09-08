@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_14_184849) do
+ActiveRecord::Schema.define(version: 2020_08_23_111153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,24 +58,33 @@ ActiveRecord::Schema.define(version: 2020_08_14_184849) do
 
   create_table "contracts", force: :cascade do |t|
     t.float "price", null: false
-    t.string "salesman_name"
     t.datetime "validation", null: false
     t.datetime "expiration", null: false
     t.string "status", limit: 1, default: "E"
     t.bigint "document_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "persona_id"
     t.index ["document_id"], name: "index_contracts_on_document_id"
+    t.index ["persona_id"], name: "index_contracts_on_persona_id"
   end
 
   create_table "documents", force: :cascade do |t|
     t.string "description"
-    t.string "type"
+    t.string "type_document"
     t.string "finality"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_documents_on_user_id"
+    t.string "visibility_mode", limit: 1, default: "G"
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "document_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_id"], name: "index_permissions_on_document_id"
+    t.index ["user_id"], name: "index_permissions_on_user_id"
   end
 
   create_table "personas", force: :cascade do |t|
@@ -108,5 +117,7 @@ ActiveRecord::Schema.define(version: 2020_08_14_184849) do
   add_foreign_key "comments", "contracts"
   add_foreign_key "comments", "users"
   add_foreign_key "contracts", "documents"
-  add_foreign_key "documents", "users"
+  add_foreign_key "contracts", "personas"
+  add_foreign_key "permissions", "documents"
+  add_foreign_key "permissions", "users"
 end

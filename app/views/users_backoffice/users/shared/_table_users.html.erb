@@ -18,25 +18,7 @@
         </div>
         <div class="x_content">
 
-            <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <%=link_to users_backoffice_welcome_index_path, { :class => "nav-link"} do %>
-                        <span>Home</span>
-                    <% end %>
-                </li>
-
-                <li class="nav-item"> 
-                    <%=link_to users_backoffice_users_path, { :class => "nav-link active"} do %>
-                        <span>Usuários</span>
-                    <% end %>        
-                </li>
-
-                <li class="nav-item"> 
-                    <%=link_to users_backoffice_contracts_path, { :class => "nav-link"} do %>
-                        <span>Contratos</span>
-                    <% end %>        
-                </li>
-            </ul>
+            <%= render partial: "users_backoffice/shared/bradcrumbs"%>
         
             <%=link_to new_users_backoffice_user_path, {:class => "btn btn-primary btn-circle", :data => { :toggle => "tooltip", :placement => "bottom" , :title => "Adicionar usuário"}} do %>
                 <i class="fa fa-user-plus" aria-hidden="true"></i>

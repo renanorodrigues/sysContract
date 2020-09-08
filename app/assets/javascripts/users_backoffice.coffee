@@ -6,8 +6,11 @@
 //=require bootstrap/dist/js/bootstrap.bundle
 //=require fastclick/lib/fastclick
 //=require nprogress/nprogress
+//=require jquery-ui/widgets/autocomplete
 //=require bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js
 //=require malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar
 //=require custom
+//=require custom_form
+//=require select-picker-master/dist/picker.min.js
 //=require bootstrap-growl-ifightcrime/jquery.bootstrap-growl
 //=require datatables.net/js/jquery.dataTables

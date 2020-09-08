@@ -1,0 +1,36 @@
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalCenterTitle">Visibilidade do documento</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <%=form_for([:users_backoffice, @document], local:true) do |f|%>
+      <div class="modal-body">
+          <div class="item form-group">  
+              <%= f.label :visibility_mode, class:"col-form-label col-md-4 col-sm-4 label-align" %>
+              <%= f.select(:visibility_mode, [["Global", "G"], ["Privado", "P"], ["Customizado", "C"]], {}, :class => "form-control col-md-8 ml-6") %>
+          </div>
+
+          <div id="form_users_permissions" style="display:none">
+            <%= f.fields_for :permissions do |p| %>
+              <div class="item form-group"> 
+                <%= p.label :user_id, class:"col-form-label col-md-4 col-sm-4 label-align" %>
+                <%= p.select(:user_id, [["Todos os Aprovadores", "Aprovador"], ["Todos os Administradores", "Administrador"], ["Aprovadores e Administradores", "Admins e Aprovadores"]], {}, :class => "form-control col-md-8 ml-6") %>
+              </div>
+            <% end %>
+          </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+        <div class="col-md-6 col-sm-6 offset-md-3">
+            <%= f.submit "Salvar configurações", class:"btn btn-primary submit" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

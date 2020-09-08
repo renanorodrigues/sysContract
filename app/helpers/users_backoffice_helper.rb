@@ -19,5 +19,17 @@ module UsersBackofficeHelper
             'Caractere inválido!'
         end
     end
-        
+    
+    def decision_comment(user, comment_decision)
+        if user.profile == "Analista" || user.profile == "Advogado"
+            comment_decision ? 'Contrato anuído' : 'Contrato dispensado'
+        else
+            comment_decision ? 'Contrato aprovado' : 'Contrato reprovado'
+        end
+    end
+
+    def duration_contract(validation, expiration)
+        date = ((expiration - validation) / (24 * 60 * 60)).to_i
+        return date
+    end
 end

@@ -34,15 +34,19 @@ pt-BR:
       document:
         description: 'Descrição'
         finality: 'Finalidade'
-        type: 'Tipo de documento'
+        visibility_mode: 'Modo de visibilidade'
+        type_document: 'Tipo de documento'
         file: 'Arquivo'
+        created_at: 'Data de registro'
+        updated_at: 'Data de atualização'
       contract:
         id: 'Código'
         price: 'Valor'
         validation: 'Data de vigência'
         expiration: 'Data de vencimento'
         final_status: 'Deliberação'
-        salesman_name: 'Vendedor'
+        persona_id: 'Vendedor'
+        document_id: 'Documento associado'
         created_at: 'Data de registro'
         updated_at: 'Data de atualização'
       comment:
@@ -56,10 +60,14 @@ pt-BR:
       associated:
         id: 'Código'
         document_id: 'Documento'
-        persona_id: 'Vinculado'
+        persona_id: 'Pessoa associada'
+      permission:
+        id: 'Código'
+        document_id: 'Documento'
+        user_id: 'Usuários associados'
       persona:
         id: 'Código'
-        full_name: 'Razão social'
+        full_name: 'Nome completo'
         email: 'E-mail'
         observation: 'Observação'
         identification: 'Identificação'

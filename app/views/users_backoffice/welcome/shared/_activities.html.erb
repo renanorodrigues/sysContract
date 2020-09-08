@@ -18,12 +18,12 @@
                         <div class="block">
                             <div class="tags">
                             <a href="" class="tag">
-                                <span><%= comment.user.profile.description %></span>
+                                <span><%= comment.user.profile %></span>
                             </a>
                             </div>
                             <div class="block_content">
                             <h2 class="title">
-                                            <a><%= comment.contract.title %></a>
+                                            <a><%= comment.contract.document.description %></a>
                                         </h2>
                             <div class="byline">
                                 <span><%= I18n.l(comment.created_at, format: :short)%></span> por <a><%= comment.user.first_name %></a>

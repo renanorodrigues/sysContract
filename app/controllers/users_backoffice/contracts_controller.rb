@@ -2,7 +2,8 @@ class UsersBackoffice::ContractsController < UsersBackofficeController
   before_action :set_contract, only: [:edit, :show, :update, :destroy]
 
   def index
-    @contracts = Contract.includes(:comments)
+    console
+    @contracts = ReturnContractsService.call(current_user)
     respond_to do |format|
       format.html
       format.pdf
@@ -21,7 +22,7 @@ class UsersBackoffice::ContractsController < UsersBackofficeController
   def create
     @contract = Contract.new(params_contract)
     if @contract.save
-      AnalystApproveService.call(@contract)
+      #ApproveContractService.call(@contract)
       redirect_to users_backoffice_contracts_path, notice: "Contrato cadastrado!"
     else
       render:new
@@ -34,6 +35,7 @@ class UsersBackoffice::ContractsController < UsersBackofficeController
 
   def update
     if @contract.update(params_contract)  
+      NotifyExpirationService.call(@contract)
       redirect_to users_backoffice_contracts_path, notice: "Atualização feita com sucesso!"
     else
       render :edit 
@@ -59,6 +61,6 @@ class UsersBackoffice::ContractsController < UsersBackofficeController
     end
 
     def params_contract
-      params_contract = params.require(:contract).permit(:title, :description, :user_id, :file_contract, comments_attributes: [ :id, :user_id, :observation, :status])
+      params_contract = params.require(:contract).permit(:persona_id, :price, :validation, :expiration, comments_attributes: [ :id, :user_id, :observation, :status])
     end
 end

@@ -78,7 +78,7 @@
                       Pessoa Física | Jurídica <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
                         <li>
-                          <%= link_to new_users_backoffice_user_path do%>
+                          <%= link_to new_users_backoffice_persona_path do%>
                             Adicionar pessoa
                           <% end %>
                         </li>
@@ -88,7 +88,7 @@
                           Vendedores <span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                             <li>
-                              <%= link_to users_backoffice_enterprises_path do%>
+                              <%= link_to users_backoffice_path(:identification => "Vendedor") do%>
                                 Relatório de vendedores
                               <% end %>
                             </li>
@@ -100,7 +100,7 @@
                           Clientes <span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                             <li>
-                              <%= link_to users_backoffice_enterprises_path do%>
+                              <%= link_to users_backoffice_path(:identification => "Cliente") do%>
                                 Relatório de clientes
                               <% end %>
                             </li>
@@ -112,7 +112,7 @@
                           Fornecedores <span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                             <li>
-                              <%= link_to users_backoffice_enterprises_path do%>
+                              <%= link_to users_backoffice_path(:identification => "Fornecedor") do%>
                                 Relatório de fornecedores
                               <% end %>
                             </li>
@@ -124,7 +124,7 @@
                           Empresas do grupo <span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                             <li>
-                              <%= link_to users_backoffice_enterprises_path do%>
+                              <%= link_to users_backoffice_path(:identification => "Empresa do grupo") do%>
                                 Relatório de empresas
                               <% end %>
                             </li>
@@ -137,7 +137,7 @@
                           Advocacia <span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                             <li>
-                              <%= link_to users_backoffice_enterprises_path do%>
+                              <%= link_to users_backoffice_path(:identification => "Escritório de advocacia") do%>
                                 Relatório de escritórios
                               <% end %>
                             </li>
@@ -160,7 +160,7 @@
                         <% end %>
                       </li>
                       
-                      <% if current_user.profile == "Analista" or current_user.profile == "Administrador" %>
+                      <% if current_user.profile == "Analista" or current_user.profile == "Auxiliar" %>
                       <li>
                         <%= link_to new_users_backoffice_document_path do%>
                           Adicionar documento
@@ -177,14 +177,6 @@
                               Relatório de contratos
                             <% end %>
                           </li>
-                          
-                          <% if current_user.profile == "Analista" or current_user.profile == "Administrador" %>
-                          <li>
-                            <%= link_to new_users_backoffice_contract_path do%>
-                              Adicionar contrato
-                            <% end %>
-                          </li>
-                          <% end %>
                         </ul>
                       </li>
                       
@@ -337,18 +329,8 @@
       </div>
     </div>
     
-
     <%= javascript_include_tag 'application'%>
     <%= javascript_include_tag 'users_backoffice'%>
-     
-    <script>
-      $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-      })
-
-      var table = $('#datatable-responsive').DataTable();
-      table.btn().disable();
-
-    </script>
+    
   </body>
 </html>

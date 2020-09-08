@@ -29,9 +29,14 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
 
+# Prawn - Generator PDF file
 gem 'prawn-rails'
 
+# Write XLSX - Generator file xlsx
 gem 'write_xlsx'
+
+# Jquery UI (Autocomplete)
+gem 'jquery-ui-rails' 
 
 gem 'faker'
 
